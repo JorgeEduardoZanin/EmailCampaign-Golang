@@ -1,6 +1,10 @@
 package domain
 
-import "time"
+import (
+	"time"
+
+	"github.com/rs/xid"
+)
 
 type Campaign struct {
 	Id        string
@@ -19,6 +23,7 @@ func Constructor(name string, content string, contacts []string) *Campaign {
 	}
 
 	return &Campaign{
+		Id:        xid.New().String(),
 		Name:      name,
 		CreatedAt: time.Now(),
 		Content:   content,
