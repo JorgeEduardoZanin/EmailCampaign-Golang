@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"errors"
 	"time"
 
 	"github.com/rs/xid"
@@ -15,11 +14,7 @@ type Campaign struct {
 	Contacts  []Contact
 }
 
-func Constructor(name string, content string, contacts []string) (*Campaign, error) {
-
-	if name == "" || content == "" {
-		return nil, errors.New("name and content is empty")
-	}
+func Constructor(name string, content string, contacts []string) *Campaign {
 
 	emails := make([]Contact, len(contacts))
 
@@ -33,6 +28,6 @@ func Constructor(name string, content string, contacts []string) (*Campaign, err
 		CreatedAt: time.Now(),
 		Content:   content,
 		Contacts:  emails,
-	}, nil
+	}
 
 }
